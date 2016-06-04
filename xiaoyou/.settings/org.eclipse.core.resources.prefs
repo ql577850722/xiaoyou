@@ -22,5 +22,4 @@ encoding//src/main/resources/db.properties=UTF-8
 encoding//src/test/java/xiaoyou/service/impl/test/CommentsServiceImplTest.java=UTF-8
 encoding//src/test/java/xiaoyou/service/impl/test/LogServiceImplTest.java=UTF-8
 encoding//src/test/java/xiaoyou/service/impl/test/TalkServiceImplTest.java=UTF-8
-encoding/<project>=UTF-8
 encoding/sql=UTF-8
