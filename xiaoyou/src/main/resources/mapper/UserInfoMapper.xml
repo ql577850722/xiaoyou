@@ -3,6 +3,8 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
-<mapper namespace="">
-	
+<mapper namespace="xiaoyou.mapper.UserInfoMapper">
+	<select id="login" parameterType="UserInfoPO" resultType="UserInfoPO">
+		select * from userInfo where u_email=#{u_email}  and u_pwd=#{u_pwd}
+	</select>
 </mapper>

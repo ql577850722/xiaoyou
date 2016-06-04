@@ -20,7 +20,7 @@ public class DBConnTest {
 	@Test
 	public void testConn() {
 		Connection con = sqlSessionFactory.openSession().getConnection();
-		assertNotNull("Êı¾İ¿âÁ¬½ÓÊ§°Ü!!!", con);
+		assertNotNull("æ•°æ®åº“è¿æ¥å¤±è´¥!!!", con);
 	}
-//aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
 }

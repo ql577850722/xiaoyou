@@ -1,0 +1,158 @@
+<div id="addActive_table"></div>
+<script>
+	$(function(){
+		var datagrid;//
+		var op;//所传入的对象
+		var editRow=undefined;//编辑的行
+		datagrid=$("#addActive_table").datagrid({
+			url:'../Back_Active.do?op=findBypage',
+			pagination:true,
+			singleSelect:true,
+			rownumbers:true,
+			pageSize:3,
+			pageList:[1,3,5,7,9],
+			columns:[[   
+			        {field:'acid',title:'活动编号',width:100,height:200,align:'center'},   
+			        {field:'u_name',title:'用户名',width:100,height:200,align:'center'},   
+			        {field:'aname',title:'活动名称',width:100,height:200,align:'center'},			       
+			        {field:'aphoto',title:'活动图片',width:200,height:200,overflow:'hidden',align:'center',
+			        	formatter:function(value,row,index){
+			        		value="../"+value;
+			        		return "<img src=\""+value+"\" style=\"height:200px;\"/>";
+			        	}
+			        }  
+   			 ]],
+   			 toolbar:[{
+   			 		text:'审核通过',
+   			 		iconCls:'icon-ok',
+   			 		handler:function(){
+   			 			var rows=datagrid.datagrid("getSelections");
+   			 			//console.info(rows);
+   			 			if(rows==0){
+   			 				$.messager.show({title:'温馨提示',msg:'请选择您要审核的数据...',timeout:2000,showType:'slide'});
+   			 			}else{
+   			 				var acid=rows[0].acid;
+   			 				$.post("../Back_Active.do",{op:"okActive",acid:acid},function(data){
+   			 					if(data==1){
+   			 						$.messager.show({title:'温馨提示',msg:'活动审核成功，已通过！！！',timeout:2000,showType:'slide'});
+   			 						$('#addActive_table').datagrid('reload');
+   			 					}else{
+   			 						$.messager.show({title:'温馨提示',msg:'系统错误！！！',timeout:2000,showType:'slide'});
+   			 					}
+   			 				});
+   			 			}
+   			 		} 
+		  		},'-',{
+		  			text:'审核未通过',
+   			 		iconCls:'icon-no',
+   			 		handler:function(){
+   			 			var rows=datagrid.datagrid("getSelections");
+   			 			console.info(rows);
+   			 			if(rows==0){
+   			 				$.messager.show({title:'温馨提示',msg:'请选择您要审核的数据...',timeout:2000,showType:'slide'});
+   			 			}else{
+   			 				var acid=rows[0].acid;
+   			 				$.post("../Back_Active.do",{op:"noActive",acid:acid},function(data){
+   			 					if(data==1){
+   			 						$.messager.show({title:'温馨提示',msg:'活动审核成功,很遗憾未通过！！！',timeout:2000,showType:'slide'});
+   			 						$('#addActive_table').datagrid('reload');
+   			 					}else{
+   			 						$.messager.show({title:'温馨提示',msg:'系统错误！！！',timeout:2000,showType:'slide'});
+   			 					}
+   			 				})
+   			 			}
+   			 		} 
+		  		},'-',{
+		   			 text:'活动详情',
+		   			 iconCls:'icon-search',
+		   			 handler:function(){
+		   			 		var rows=datagrid.datagrid("getSelections");
+		   			 		if(rows.length!=1){
+   			 					$.messager.show({title:'温馨提示',msg:'请选择您要查看的活动,每次只能选择一个活动！！！',timeout:2000,showType:'slide'});
+   			 				}else{
+   			 					var acid=rows[0].acid;
+   			 					$.post("../Back_Active.do",{op:"findActive",acid:acid},function(data){
+   			 					$.each(data.back_active,function(index,item){
+   			 						$(".back_u_id").html(item.u_id);
+   			 						$(".back_u_name").html(item.u_name);
+   			 						$(".back_acid").html(item.acid);
+   			 						$(".back_aname").html(item.aname);
+   			 						$(".back_astarttime").html(item.astarttime);
+   			 						$(".back_aadd").html(item.aadd);
+   			 						$(".back_atype").html(item.atype);
+   			 						$(".back_aexpend").html(item.aexpend);
+   			 						$(".back_acity").html(item.acity);
+   			 						$(".back_aperson").html(item.aperson);
+   			 						$(".back_adate").html(item.adate);
+									$(".back_acontent").html(item.acontent);
+									$(".b").css("padding-left","10px");
+									$(".b").css("color","blue");
+   			 					})
+   			 					},"json");
+   			 					$("#activeMeg").window("open");
+   			 				}
+		   			 }
+		   	}]
+		});
+	})
+
+
+</script>
+<div id="activeMeg" class="easyui-window" title="用户信息" style="width:600px;height:400px" data-options="closed:true">
+	<div style="width:200px;padding-left:40px;padding-top:10px;">		
+		<table style="">
+			<tr>
+				<td>用户ID:</td>
+				<td class="b back_u_id"></td>
+			</tr>
+			<tr>
+				<td>用户呢称:</td>
+				<td class="b back_u_name"></td>
+			</tr>
+			<tr>
+				<td>活动编号:</td>
+				<td class="b back_acid"></td>
+			</tr>
+			<tr>
+				<td>活动名称:</td>
+				<td class="b back_aname"></td>
+			</tr>
+			<tr>
+				<td>开始时间:</td>
+				<td class="b back_astarttime"></td>
+			</tr>
+			<tr>
+				<td>活动地点:</td>
+				<td class="b back_aadd"></td>
+			</tr>
+			<tr>
+				<td>活动类别:</td>
+				<td class="b back_atype"></td>
+			</tr>
+			<tr>
+				<td>花销:</td>
+				<td class="b back_aexpend"></td>
+			</tr>
+			<tr>
+				<td>活动城市:</td>
+				<td class="b back_acity"></td>
+			</tr>
+			<tr>
+				<td>需要人数:</td>
+				<td class="b back_aperson"></td>
+			</tr>
+			<tr>
+				<td>报名截至日期:</td>
+				<td class="b back_adate"></td>
+			</tr>
+			<tr>
+				<td>活动内容:</td>
+				<td class="b back_acontent"></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+
+

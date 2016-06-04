@@ -1,0 +1,33 @@
+<div id="talk_table"></div>
+<script>
+	$(function(){
+		var datagrid;//
+		var op;//所传入的对象
+		var editRow=undefined;//编辑的行
+		datagrid=$("#talk_table").datagrid({
+			url:'../Back_talk.do?op=findBypage',
+			pagination:true,
+			singleSelect:true,
+			rownumbers:true,
+			pageSize:3,
+			pageList:[3,9,12,15,20],
+			columns:[[   
+			        {field:'u_id',title:'用户ID',width:100,align:'center'},   
+			        {field:'talk_content',title:'说说内容',width:100,align:'center'},   
+			        {field:'talk_image_path',title:'图片',width:100,overflow:'hidden',align:'center',
+			        	formatter:function(value,row,index){
+			        		value="../"+value;
+			        		return "<img src=\""+value+"\" style=\"height:200px;\"/>";
+			        	}
+			        
+			        },
+			        {field:'talk_time',title:'时间',width:100,align:'center'},   
+			        {field:'talk_address',title:'地点',width:100,align:'center'},   
+			       
+   			 ]],
+   			
+		})
+	})
+
+
+</script>

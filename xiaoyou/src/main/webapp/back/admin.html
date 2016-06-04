@@ -1,0 +1,82 @@
+<div id="admin_table"></div>
+<script>
+	
+	$(function(){
+		var datagrid;
+		var  op;
+		var editRow=undefined;
+		datagrid=$("#admin_table").datagrid({
+			url:'../admin.do?op=findBypage',
+			pagination:true,
+			singleSelect:true,
+			pageSize:3,
+			pageList:[1,3,5,7,9],
+			columns:[[   
+			        {field:'admin_id',title:'管理员ID',width:100,align:'center'},   
+			        {field:'admin_name',title:'姓名',width:100,align:'center',editor:{type:"text",options:{required:true}}},   
+			        {field:'admin_pwd',title:'密码',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+			        
+   			 ]],
+   			 toolbar:[{
+   			 		text:'添加',
+   			 		iconCls:'icon-add',
+   			 		handler:function(){
+   			 			op="addAdmin";
+   			 			if(editRow!=undefined){
+   			 				datagrid.datagrid("rejectChanges");
+   			 				datagrid.datagrid("endEdit",editRow);
+   			 				editRow=undefined;
+   			 			}else{
+   			 				datagrid.datagrid("insertRow",{index:0,row:{}});
+   			 				datagrid.datagrid("beginEdit",0);
+   			 				editRow=0;
+   			 			}
+   			 		}
+   			  },'-',{
+   			 		text:'保存',
+   			 		iconCls:'icon-save',
+   			 		handler:function(){
+   			 			datagrid.datagrid("endEdit",editRow);
+						var rows = datagrid.datagrid("getChanges")[0];
+						if (rows == undefined) {
+								datagrid.datagrid("rejectChanges");
+								datagrid.datagrid("unselectAll");
+								editRow = undefined;
+						} else {
+   			 					rows["op"]=op;
+   			 					$.post("../admin.do",rows,function(data){
+   			 						if(data==1){
+   			 							$.messager.show({title:'温馨提示',msg:'管理员信息添加成功！！！',timeout:2000,showType:'slide'});
+   			 						}
+   			 						rows=null;
+   			 						datagrid.datagrid("reload");
+   			 						datagrid.datagrid("rejectChanges");
+									datagrid.datagrid("unselectAll");
+   			 					})
+   			 			}
+   			 		}
+  			},'-',{
+   			 		text:'删除',
+   			 		iconCls:'icon-remove',
+   			 		handler:function(){
+   			 			var rows=datagrid.datagrid("getSelections");
+   			 			//console.info(rows);
+   			 			if(rows==0){
+   			 				$.messager.show({title:'温馨提示',msg:'请选择您想要删除的信息',timeout:2000,showType:'slide'});
+   			 			}else{
+   			 				var admin_id=rows[0].admin_id;
+   			 				$.post("../admin.do",{op:"removAdmin",admin_id:admin_id},function(data){
+   			 					if(data==1){
+   			 						$.messager.show({title:'温馨提示',msg:'管理员删除成功！！！',timeout:2000,showType:'slide'});
+   			 						$('#admin_table').datagrid('reload');
+   			 					}else{
+   			 						$.messager.show({title:'温馨提示',msg:'系统错误！！！',timeout:2000,showType:'slide'});
+   			 					}
+   			 				});
+   			 			}
+   			 		}
+   			 
+   			 }]
+		});
+	});
+</script>

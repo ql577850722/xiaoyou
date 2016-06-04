@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>后台登录</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../easyui/css/easyui.css" />
+	<link rel="stylesheet" type="text/css" href="../easyui/css/icon.css" />
+	<script type="text/javascript" src="../easyui/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../easyui/js/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../easyui/js/easyui-lang-zh_CN.js"></script>
+	
+   	<script type="text/javascript">
+   	$(function(){
+	$(".login").click(function(){
+		//获取用户名和密码
+		var admin_name=$("#login_form input").first().val();
+		var admin_pwd=$("#login_form input").last().val();
+		$.post("../admin.do",{op:"AdminLogin",admin_name:admin_name,admin_pwd:admin_pwd},function(data){
+			if(data==1){
+				location.href="../back/main.html";
+			}else{
+				alert("登录失败");
+			}
+	
+		});
+	});
+});
+   
+   
+   
+	</script>
+  </head>
+  
+ <body style="margin:0 auto;width:410PX;">
+	<div style="position:absolute;top:100px;">
+		<div class="easyui-panel" title="管理员登录" data-options="" style="width:400px;">
+			<form id="login_form" method="post">
+				<table align="center">
+					<tr>
+						<td>账号：</td>
+						<td><input class="easyui-validatebox" data-options="required:true" type="text"></td>
+					</tr>
+					<tr>
+						<td>密码：</td>
+						<td><input class="easyui-validatebox" data-options="required:true" type="password"></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<a class="easyui-linkbutton login">登&nbsp;录</a>						
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

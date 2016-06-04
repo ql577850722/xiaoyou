@@ -1,0 +1,141 @@
+<div id="userInfo_table"></div>
+<script>
+	$(function(){
+		datagrid=$("#userInfo_table").datagrid({
+			url:'../Back_userInfo.do?op=findBypage',
+			pagination:true,
+			singleSelect:true,
+			rownumbers:true,
+			pageSize:3,
+			pageList:[1,3,5,7,9],
+			columns:[[   
+			        {field:'u_id',title:'用户ID',width:100,align:'center'},   
+			        {field:'u_name',title:'姓名',width:100,align:'center'},   
+			        {field:'u_email',title:'邮箱',width:100,align:'center'},
+			        {field:'u_pwd',title:'密码',width:100,align:'center'},   
+			        
+   			 ]],
+   			 toolbar:[{   
+   			 		text:'在线用户',
+   			 		iconCls:'icon-man',
+   			 		handler:function(){
+   			 		
+   			 		}
+   			 
+   			 	},'-',{			 		
+   			 		text:'资料详情',
+   			 		iconCls:'icon-search',
+   			 		handler:function(){
+   			 			var rows=datagrid.datagrid("getSelected");
+   			 			if(rows==null){
+   			 				$.messager.show({title:'温馨提示',msg:'请选择您要查看的用户...',timeout:2000,showType:'slide'});   			 			
+   			 			}else{
+   			 				var u_email=rows.u_email;
+   			 				$.post("../Back_userInfo.do",{op:"findByID",u_email:u_email},function(data){
+   			 					$.each(data.back_userinfo,function(index,item){
+   			 						$(".back_u_id").html(item.u_id);
+   			 						$(".back_u_name").html(item.u_name);
+   			 						$(".back_u_email").html(item.u_email);
+   			 						$(".back_u_sex").html(item.u_sex);
+   			 						$(".back_u_birth").html(item.u_birth);
+   			 						$(".back_u_addr").html(item.u_province+item.u_city+item.u_area);
+   			 						$(".back_u_school").html(item.u_school);
+   			 						$(".back_u_academy").html(item.u_academy);
+   			 						$(".back_u_grade").html(item.u_grade);
+   			 						$(".back_u_stature").html(item.u_stature);
+   			 						$(".back_u_weight").html(item.u_weight);
+									$(".back_u_blood").html(item.u_blood);
+									$(".back_u_qq").html(item.u_qq);
+									$(".back_u_tel").html(item.u_tel);   			 					
+   			 						$(".back_u_wechat").html(item.u_wechat);
+									$(".back_u_text").html(item.u_text);
+									$(".b").css("padding-left","10px");
+									$(".b").css("color","blue");
+   			 					})
+   			 				},"json");
+   			 				$("#usersMeg").window("open");	
+   			 			}
+   			 		}
+   			 }]
+		});
+	});
+</script>
+<div id="usersMeg" class="easyui-window" title="用户信息" style="width:600px;height:400px" data-options="closed:true">
+	<div style="width:200px;padding-left:40px;padding-top:10px;">		
+		<table style="">
+			<tr>
+				<td>用户ID:</td>
+				<td class="b back_u_id"></td>
+			</tr>
+			<tr>
+				<td>用户姓名:</td>
+				<td class="b back_u_name"></td>
+			</tr>
+			<tr>
+				<td>邮箱帐号:</td>
+				<td class="b back_u_email"></td>
+			</tr>
+			<tr>
+				<td>性别:</td>
+				<td class="b back_u_sex"></td>
+			</tr>
+			<tr>
+				<td>出生日期:</td>
+				<td class="b back_u_birth"></td>
+			</tr>
+			<tr>
+				<td>地址:</td>
+				<td class="b back_u_addr"></td>
+			</tr>
+			<tr>
+				<td>学校:</td>
+				<td class="b back_u_school"></td>
+			</tr>
+			<tr>
+				<td>学院:</td>
+				<td class="b back_u_academy"></td>
+			</tr>
+			<tr>
+				<td>入学时间:</td>
+				<td class="b back_u_grade"></td>
+			</tr>
+			<tr>
+				<td>身高:</td>
+				<td class="b back_u_stature"></td>
+			</tr>
+			<tr>
+				<td>体重:</td>
+				<td class="b back_u_weight"></td>
+			</tr>
+			<tr>
+				<td>血型:</td>
+				<td class="b back_u_blood"></td>
+			</tr>
+			<tr>
+				<td>qq号:</td>
+				<td class="b back_u_qq"></td>
+			</tr>
+			<tr>
+				<td>手机号码:</td>
+				<td class="b back_u_tel"></td>
+			</tr>
+			<tr>
+				<td>微信号:</td>
+				<td class="b back_u_wechat"></td>
+			</tr>
+			<tr>
+				<td>交友宣言:</td>
+				<td class="b back_u_text"></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+

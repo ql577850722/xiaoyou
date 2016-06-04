@@ -1,0 +1,132 @@
+*{
+	padding:0px;
+	margin:0px auto;	
+}
+
+ul li{
+	list-style:none;
+	font-family:"Î¢ÈíÑÅºÚ";}
+body{
+	height:100%;	
+	background:url(../images/bg_2.jpg)  no-repeat ;
+	background-color: #f8f8f8;
+	z-index:0;	
+}
+#register{
+	width:1000px;
+	height:500px;
+	background:#CCC;
+	margin-top:10px;
+	opacity:0.9;
+	border-radius:10px;}
+#div_h1{
+		height:24px;
+		padding-top:20px;}
+#register  h1{
+	font-weight:normal;
+	font-size:24px;
+	text-align:center;
+	color:#666;}
+#register	form{
+	width:100%;
+	height:240px;
+		padding-top:40px;}
+.box{
+	height:40px;
+	width:600px;
+	line-height:40px;
+	padding-left:240px;
+	padding-top:20px;}
+#register  .box  .a{
+	height:30px;
+	width:100px;
+	font-size:18px;
+	text-align:left;
+	float:left;}
+#register  .box  .c{
+	height:30px;
+	width:200px;
+	text-align:center;
+	float:left;}	
+#register  .box  .c input{
+	height:24px;
+	width:200px;
+	text-align:left;
+	font-size:16px;
+	margin-top:5px;
+	float:left;}
+#register #u_email_code{
+	width:80px;
+	height:24px;
+	background:red;}
+#register #submit{
+	width:120px;
+	height:40px;
+	text-align:center;
+	background-color:#06F;
+	border-radius:5px;
+	margin-top:20px;
+	margin-left:40px;
+	}	
+#register .r i{
+	height:28px;
+	padding-left:15px;
+	padding-right:10px;
+	color:red;
+	}
+#register .error{
+	font-size:14px;
+	display:block;}
+#register #back_login{
+	height:25px;
+	padding-top:60px;}		
+#register #back_login a{
+	float:right;
+	padding-right:100px;}		
+#footer{
+	height:100px;
+	opacity:0.5;	
+	width:100%;
+	position:absolute;
+	z-index:2;
+	
+}
+#footer .footer{
+	width:1020px;	
+	text-align:center;}
+#line{	
+	border-bottom:1px solid #F69;
+}
+#footer_li{
+	width:700px;
+	height:30px;
+	margin-top:10px;
+	
+}
+#footer_li li{
+	float:left;
+	margin-left:20px;
+}
+#footer_li .line{
+	color:#999;}
+#footer_li li a{
+	font-size:15px;
+	text-decoration:none;	
+	color:#000;
+}
+#footer_li li a:hover{
+	color:#F0F;
+	text-decoration:underline;
+}
+#footer .footer_p1{
+	width:500px;
+	height:30px;
+	font-size:15px;
+	color:#000;
+	}
+#footer .footer_p2{
+	width:400px;
+	height:30px;
+	font-size:15px;
+	color:#000;
+	}

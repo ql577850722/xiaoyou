@@ -1,0 +1,60 @@
+<div id="photo_table"></div>
+<script>
+	$(function(){
+		datagrid=$("#photo_table").datagrid({
+			url:'../Back_photoServlet.do?op=findBypage',
+			pagination:true,
+			singleSelect:true,
+			rownumbers:true,
+			pageSize:3,
+			pageList:[3,5,7,9],
+			columns:[[   
+			        {field:'u_id',title:'用户ID',width:100,align:'center'},   
+			        {field:'photo_path',title:'图片',width:600,align:'center'},   
+   			 ]],
+   			 toolbar:[{
+   			 		text:'审核通过',
+   			 		iconCls:'icon-ok',
+   			 		handler:function(){
+   			 			var rows=datagrid.datagrid("getSelections");
+   			 			//console.info(rows);
+   			 			if(rows==0){
+   			 				$.messager.show({title:'温馨提示',msg:'请选择您要审核的用户...',timeout:2000,showType:'slide'});
+   			 			}else{
+   			 				var photo_id=rows[0].photo_id;
+   			 				$.post("../Back_photoServlet.do",{op:"okPhoto",photo_id:photo_id},function(data){
+   			 					if(data==1){
+   			 						$.messager.show({title:'温馨提示',msg:'上传照片审核成功，已通过！！！',timeout:2000,showType:'slide'});
+   			 						$("#photo_table").datagrid("reload");
+   			 					}else{
+   			 						$.messager.show({title:'温馨提示',msg:'系统错误！！！',timeout:2000,showType:'slide'});
+   			 					}
+   			 				})
+   			 			}
+   			 		} 
+		  		},'-',{
+		  			text:'审核未通过',
+   			 		iconCls:'icon-no',
+   			 		handler:function(){
+   			 			var rows=datagrid.datagrid("getSelections");
+   			 			//console.info(rows);
+   			 			if(rows==0){
+   			 				$.messager.show({title:'温馨提示',msg:'请选择您要审核的数据...',timeout:2000,showType:'slide'});
+   			 			}else{
+   			 				var photo_id=rows[0].photo_id;
+   			 				$.post("../Back_photoServlet.do",{op:"noPhoto",photo_id:photo_id},function(data){
+   			 					if(data==1){
+   			 						$.messager.show({title:'温馨提示',msg:'上传照片审核成功,很遗憾未通过！！！',timeout:2000,showType:'slide'});
+   			 						$("#photo_table").datagrid("reload");
+   			 					}else{
+   			 						$.messager.show({title:'温馨提示',msg:'系统错误！！！',timeout:2000,showType:'slide'});
+   			 					}
+   			 				})
+   			 			}
+   			 		} 
+   			 }]
+		});
+	
+	
+	})
+</script>

@@ -1,0 +1,179 @@
+@charset "utf-8";
+*{
+	padding:0px;
+	margin:0px auto;	
+}
+body{
+	color:#38AE03;	
+	}
+ul li{
+	list-style:none;
+	font-family:"微软雅黑";}
+body{
+	height:100%;	
+	background:url(../images/bg_2.jpg)  no-repeat ;
+	background-color: #f8f8f8;
+	z-index:0;	
+}	
+
+/*注册面板*/
+#register{
+	width:1000px;
+	height:600px;
+	background:#CCC;
+	margin-top:10px;
+	opacity:0.9;
+	border-radius:10px;}
+#register  h1{
+	font-weight:normal;
+	font-size:30px;
+	text-align:center;
+	color:#666;}	
+.box{
+	height:40px;
+	width:600px;
+	line-height:40px;
+	padding-left:240px;}
+.error{
+	color:red;
+}
+#register  .box  .a{
+	height:30px;
+	width:100px;
+	text-align:left;
+	float:left;}
+#register  .box  .c{
+	height:30px;
+	width:200px;
+	text-align:center;
+	float:left;}
+
+#register  .box  .c .sex{
+	height:20px;
+	width:40px;
+	margin-top:10px;
+	}	
+#register  .box  .c input{
+	height:28px;
+	width:200px;
+	font-size:14px;
+	text-align:left;}
+#register  .box_5  .c select{
+	height:28px;
+	width:63px;
+	font-size:14px;
+	text-align:left;}
+#register  .box_6 .c select{
+	height:28px;
+	width:63px;
+	font-size:14px;
+	text-align:left;}
+#register  .box_7 .c select{
+	height:28px;
+	width:200px;
+	font-size:14px;
+	text-align:center;}
+#register  .box_8 .c select{
+	height:28px;
+	width:200px;
+	font-size:14px;
+	text-align:center;}
+#register  .box_9 .c select{
+	height:28px;
+	width:200px;
+	font-size:14px;
+	text-align:center;}
+#register  .box_10 .c select{
+	height:28px;
+	width:200px;
+	font-size:14px;
+	text-align:center;}
+#register .box_12 .a input{
+	background:#F39;}
+#register .box .c .submit{
+	width:120px;
+	height:40px;
+	margin-top:20px;
+	text-align:center;
+	background-color:#06F;}	
+
+.option{
+	width:180px;
+	height:28px;
+	text-align:center;
+	font-size:14px;
+}
+
+
+#register .r i{
+	height:28px;
+	padding-left:15px;
+	padding-right:10px;
+	color:red;
+	}
+#register .error{
+	font-size:14px;
+	display:block;}
+#register #back_login{
+	height:25px;
+	padding-top:30px;
+	}	
+#register #back_login a{
+	float:right;
+	padding-right:100px;
+}
+#footer{
+	height:100px;
+	opacity:0.5;
+	position:relative;	
+	width:100%;
+	position:absolute;
+	z-index:2;
+}
+#footer .footer{
+	width:1020px;
+	text-align:center;}
+
+#footer_li{
+	width:700px;
+	height:30px;
+	margin-top:10px;
+	
+}
+#footer_li li{
+	float:left;
+	margin-left:20px;
+}
+#footer_li .line{
+	color:#999;}
+#footer_li li a{
+	font-size:15px;
+	text-decoration:none;	
+	color:#000;
+}
+#footer_li li a:hover{
+	color:#F0F;
+	text-decoration:underline;
+}
+#footer .footer_p1{
+	width:500px;
+	height:30px;
+	font-size:15px;
+	color:#000;
+	}
+#footer .footer_p2{
+	width:400px;
+	height:30px;
+	font-size:15px;
+	color:#000;
+	}		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

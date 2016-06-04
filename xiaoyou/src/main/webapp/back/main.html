@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>main.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  	<link rel="stylesheet" type="text/css" href="../easyui/css/easyui.css"/>
+	<link rel="stylesheet" type="text/css" href="../easyui/css/icon.css"/>
+	<script type="text/javascript" src="../easyui/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../easyui/js/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../easyui/js/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../easyui/js/main.js"></script>
+    
+
+  </head>
+  
+  <body class="easyui-layout">
+  
+   		<div data-options="region:'north',border:false" id="newslogo" style="height:120px;">
+   			<ul>
+   				<li><a class="easyui-linkbutton" data-options="plain:true" href="javascript:void(0)" >修改密码</a></li>
+   				<li><a class="easyui-linkbutton" data-options="plain:true" href="javascript:void(0)" >安全退出</a></li>
+   			</ul>
+   		</div>
+   		<div data-options="region:'west',title:'导航'" style="width:180px;">
+   			<ul class="easyui-tree" id="menu_tree">
+   				<li>
+   					<span>菜单</span>
+   					<ul>
+   						<li id="admin_content"><span>管理员信息管理</span></li>
+   						<li data-options="state:'closed'">
+   							<span>用户管理</span>
+   							<ul>
+		   						<li id="userInfo_content"><span>用户信息管理</span></li>
+		   						<li id="photo_content"><span>上传照片管理</span></li>
+		   						<li id="talk_content"><span>用户言论管理</span></li> 
+		   					</ul>
+	   					</li> 						
+   						<li data-options="state:'closed'">
+   							<span>柚子活动管理</span>
+   							<ul>
+   								<li id="addActive_content"><span>申请审核的活动</span></li>
+   								<li id="okActive_content"><span>已通过的活动</span></li>
+   								<li id="noActive_content"><span>未通过的活动</span></li>
+   							</ul>
+   						</li>
+   					</ul>
+   				</li>
+   			</ul>
+   		</div>
+   		<div data-options="region:'east',split:true,collapsed:true,title:'帮助'" style="width:100px;">
+   			
+   		</div>
+   		<div data-options="region:'south'" id="copyright" style="height:50px;background-color:#4D89BB;margin:auto;">
+   			
+   		</div>
+   		<div data-options="region:'center'">
+   			<div id="content_index" class="easyui-tabs" data-options="fit:true" title="内容"></div>
+   		</div>
+  </body>
+</html>

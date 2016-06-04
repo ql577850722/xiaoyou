@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- 扫描bean包 -->
-	<context:component-scan base-package="com.yc" />
+	<context:component-scan base-package="xiaoyou" />
 
 	<!-- 引入外部属性文件 -->
 	<context:property-placeholder location="classpath:db.properties" />
@@ -27,11 +27,12 @@
 		
 	<!-- 配制mybatis的会话工厂对象 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
-		p:dataSource-ref="dataSource"/>
+		p:dataSource-ref="dataSource" p:mapperLocations="classpath:mapper/*Mapper.xml"
+		p:typeAliasesPackage="xiaoyou.po"/>
 
 	<!-- 配制映射接口 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-		p:sqlSessionFactoryBeanName="sqlSessionFactory" p:basePackage="com.yc.vote.mapper" />
+		p:sqlSessionFactoryBeanName="sqlSessionFactory" p:basePackage="xiaoyou.mapper" />
 
 
 	<!-- 1.配制事务管理器 -->

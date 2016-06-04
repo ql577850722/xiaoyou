@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="xiaoyou.mapper.LogMapper">
+	<!-- 添加说说 -->
+	<insert id="getTalk" parameterType="logPO">
+		insert into talk values(seq_talk_id.nextval,#{u_id},#{talk_content},#{talk_image_path},sysdate,null,null,null)
+	</insert>
+	
+	<!-- 查看所有说说(包括评论) 
+	<select id="getAllContents"  resultType="CommonPO">
+		select u.u_id,u.u_name,t.talk_id,t.talk_content,t.talk_image_path,t.talk_time,c.c_id,c.c_text,c.c_time,c.talking_id
+			from  talk t left join comments c on t.talk_id=c.talk_id 
+ 			left join userInfo u on t.u_id=u.u_id
+	</select>
+	
+	<resultMap type="logPO" id="ContentsMap">
+		<id column="talk_id" property="talk_id" />
+		<result column="u_id" property="u_id" />
+		<result column="talk_content" property="talk_content" />
+		<result column="talk_image_path" property="talk_image_path" />
+		<result column="talk_time" property="talk_time" />
+		<collection property="comments" column="talk_id" ofType="CommentsPO">		
+			<id  column="talk_id" property="talk_id"/>
+			<id  column="c_id" property="c_id"/>
+			<result  column="c_text" property="c_text"/>
+			<result  column="talking_id" property="talking_id"/>
+			<result  column="c_time" property="c_time"/>
+			
+		</collection>
+	</resultMap>
+	
+	<select id="getAllContents"  resultMap="ContentsMap">
+ 			 select t.*,c.c_id,c.c_text,c.c_time,c.talking_id,t.*
+			from  talk t  join comments c on t.talk_id=c.talk_id 
+	</select>-->
+	
+	<resultMap type="logPO" id="LogMap">
+		 <id column="talk_id" property="talk_id"/>
+		 <collection property="comments" column="talk_id" ofType="CommentsPO" select="getCommentsById"/>
+	</resultMap>
+	
+	<select id="getCommentsById" parameterType="int" resultType="CommentsPO">
+		select * from comments where talk_id=#{talk_id}
+		
+	</select>
+	
+	<select id="getLogById" resultMap="LogMap">
+		select * from talk 
+	</select>
+	
+</mapper>

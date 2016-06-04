@@ -1,0 +1,54 @@
+@charset "utf-8";
+#chat{
+	width:1000px;
+	height:600px;	
+}
+.chat-left{
+	width:300px;
+	height:600px;	
+	float:left;
+	border-left:1px solid #666;
+	border-right:1px solid #666;
+	border-bottom:1px solid #666;
+	border-radius:50px;
+	margin-top:40px;
+	background:#F99;
+}
+.chat-right{
+	width:680px;
+	height:600px;
+	border-left:1px solid #666;
+	border-right:1px solid #666;
+	border-bottom:1px solid #666;
+	border-radius:50px;
+	float:left;
+	margin-top:40px;
+}
+.cleft-top{
+	width:300px;
+	height:80px;
+	background:#F6C;
+	border-radius:20px;
+	border-bottom:1px solid #000;
+	float:left;
+}
+.cleft-top p{
+	float:left;
+	font-size:16px;
+	color:#00F;
+}
+.cright-top{
+	width:680px;
+	height:80px;
+	background:#C3C;
+	border-radius:20px;
+	border-bottom:1px solid #000;
+	float:left;
+}
+.cright-top p{
+	margin-top:30px;
+	float:left;
+	font-size:16px;
+	color:#00F;
+}
+

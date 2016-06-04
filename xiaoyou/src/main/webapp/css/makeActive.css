@@ -1,0 +1,91 @@
+@charset "utf-8";
+*{
+	padding:0px;
+	margin:0px auto;	
+}
+body{
+	background-color:#FCC;
+}
+#body{
+	width:1300px;
+	height:600px;
+	background-color:#FCC;
+}
+#body h4{
+	padding-left:80px;
+}
+#left{
+	margin-left:80px;
+	margin-top:20px;
+	width:400px;
+	height:240px;
+	line-height:40px;
+	float:left;
+}
+#left input{
+	height:20px;
+}
+#left h5{	
+	display:inline-block;
+}
+#left lable{
+	font-size:12px;
+}
+#dashed{
+	width:1px;
+	height:200px;
+	margin-top:30px;
+	border-left:1px dashed #666666;
+	float:left;
+}
+#right{
+	margin-top:20px;
+	width:35%;
+	height:240px;
+	line-height:40px;
+	
+	float:left;
+}
+#right input{
+	height:20px;
+}
+#right lable{
+	font-size:12px;
+}
+#pic{
+	margin-top:30px;
+	width:270px;
+	height:200px;
+	float:left;
+	background:url(../images/no_pic.jpg);
+	background-size:cover;
+}
+#img{
+	width:270px;
+	height:200px;
+}
+#right h5{
+	padding-left:20px;
+	display:inline-block;
+}
+#footer{
+	margin-left:80px;
+	width:794px;
+	height:250px;
+	float:left;
+
+}
+#cue{
+	width:400px;
+	height:300px;
+	float:right;
+	/*background-color:#fff;
+	
+	background:url(../images/cue1.png);
+	background-size:cover;*/
+}
+#cue img{
+	width:400px;
+	height:247px;
+	
+}

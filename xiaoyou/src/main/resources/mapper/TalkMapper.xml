@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="xiaoyou.mapper.TalkMapper">
+	
+	
+	<!-- 修改
+	<resultMap type="logPO" id="talkMap">
+		<id column="talk_id" property="talk_id"/>
+		<collection property="comments" select="selectCommentsByTalk" 
+		column="c_id" ofType="CommentsPO">
+		</collection>
+	</resultMap>
+	<resultMap type="CommentsPO" id="CommentsMap">
+		<association property="logpo" javaType="logPO" column="talk_id" select="selectTalk"></association>
+	</resultMap>
+	
+	<select id="selectCommentsByTalk" parameterType="int" resultMap="CommentsMap">
+		select * from comments where talk_id=#{talk_id}
+	</select>
+	<select id="selectTalk" parameterType="int " resultMap="talkMap">
+		select * from talk where u_id={#u_id}
+	</select> -->
+<!--<resultMap type="CommentsPO" id="CommentResult">
+	<association property="logpo" select="selectTalk" column="talk_id" javaType="logPO"/>
+</resultMap>
+
+<select id="selectCommentsByTalk" parameterType="int" resultMap="CommentResult">
+	select * from comments where talk_id=#{talk_id}
+</select>
+
+<select id="selectTalk" resultType="logPO">
+	select * from talk 
+</select>  -->
+	<resultMap type="logPO" id="ContentsMap">
+		<id column="talk_id" property="talk_id" />
+		<result column="u_id" property="u_id" />
+		<result column="talk_content" property="talk_content" />
+		<result column="talk_image_path" property="talk_image_path" />
+		<result column="talk_time" property="talk_time" />
+		<collection property="comments" column="talk_id" ofType="CommentsPO">		
+			<id  column="talk_id" property="talk_id"/>
+			<id  column="c_id" property="c_id"/>
+			<result  column="c_text" property="c_text"/>
+			<result  column="talking_id" property="talking_id"/>
+			<result  column="c_time" property="c_time"/>
+			
+		</collection>
+	</resultMap>
+	
+	<select id="getAllContents"  parameterType="int" resultMap="ContentsMap">
+		<!-- select u.u_id,u.u_name,t.talk_id,t.talk_content,t.talk_image_path,t.talk_time,c.c_id,c.c_text,c.c_time,c.talking_id
+			from  talk t left join comments c on t.talk_id=c.talk_id 
+ 			left join userInfo u on t.u_id=u.u_id where talk_id=#{talk_id} -->
+ 			 select t.*,c.c_id,c.c_text,c.c_time,c.talking_id,t.*
+			from  talk t  join comments c on t.talk_id=c.talk_id 
+ 			  and t.talk_id=#{talk_id} 
+	</select>
+	
+	
+</mapper>

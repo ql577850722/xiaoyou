@@ -1,0 +1,151 @@
+@charset "utf-8";
+*{
+	padding:0px;
+	margin:0px auto;	
+}
+
+ul li{
+	list-style:none;
+	font-family:"微软雅黑";}
+body{
+	height:100%;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	}	
+.bg_img{
+	left:0;
+	overflow:hidden;
+	position:absolute;
+	top:0;
+	z-index:0;}
+
+
+.main{
+	width:100%;
+	position:absolute;
+	z-index:2;}
+.head{
+	width:100%;
+	height:530px;
+	}
+.head_log{
+	width:100%;
+	padding-top:100px;
+	height:120px;}
+.log{
+	width:800px;}
+
+
+.form{
+	z-index:3;
+	width:400px;
+	height:300px;
+	margin-top:-100px;
+	margin-left:300px;
+	border:2px solid #FF6599;
+	border-radius:4px;
+	}
+	
+.form h2{
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	color:#FFF;
+	font-size:24px;
+	background:#FF6599;
+	border-bottom:1px solid #F30E5C;}
+	
+.form form{
+	height:260px;
+	font-size:14px;
+	overflow:hidden;}	
+.form .error{
+	height:30px;
+	text-align:center;}
+.error p{
+	width:260px;
+	height:24px;
+	padding-top:10px;
+	text-align:center;}
+.user{
+	height:45px;
+	text-align:center;}
+.login_button{
+	margin-top:20px;
+	text-align:center;}	
+.login_button input{
+	width:120px;
+	height:40px;
+	border-radius:5px;
+	background:#F36;}	
+#yan{
+	padding-left:40px;
+}
+.forget_pwd{
+	margin-top:5px;}
+	
+.forget_pwd_a{
+	width:150px;
+	float:right;}	
+.forget_pwd_a a{
+	color:#999;
+	text-decoration:none;
+	}	
+.forget_pwd_a a:hover{
+	color:#F30E5C;
+	text-decoration:underline;}	
+	
+	
+	
+	
+	
+#footer{
+	height:100px;
+	opacity:0.5;
+	position:relative;	
+	width:100%;
+	position:absolute;
+	z-index:2;
+}
+#footer .footer{
+	width:1020px;
+	text-align:center;}
+#line{	
+	border-bottom:1px solid #F69;
+}
+#footer_li{
+	width:700px;
+	height:30px;
+	margin-top:10px;
+	
+}
+#footer_li li{
+	float:left;
+	margin-left:20px;
+}
+#footer_li .line{
+	color:#999;}
+#footer_li li a{
+	font-size:15px;
+	text-decoration:none;	
+	color:#000;
+}
+#footer_li li a:hover{
+	color:#F0F;
+	text-decoration:underline;
+}
+#footer .footer_p1{
+	width:500px;
+	height:30px;
+	font-size:15px;
+	color:#000;
+	}
+#footer .footer_p2{
+	width:400px;
+	height:30px;
+	font-size:15px;
+	color:#000;
+	}
+
+
